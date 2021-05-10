@@ -1,6 +1,6 @@
 
 Feature: Authentication Management
-  As an user I want to authenticate myself within ghost website in order to manage my website
+  As a user I want to authenticate myself within ghost website in order to manage my website
 
   Scenario Outline: Should show an error message whether user and password are wrong
 

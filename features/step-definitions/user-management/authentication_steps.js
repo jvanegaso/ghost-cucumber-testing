@@ -1,7 +1,8 @@
-const { Given, When, Then } = require('cucumber');
+const { Given, When, Then, After } = require('cucumber');
 const { expect } = require('chai');
 const loginPage = require('../../../page-objects/login-page');
-const MainPage = require('../../../page-objects/main-page');
+
+const { logout } = require('../common/common-steps');
 
 const { usuario, clave } = require('../../../config');
 
@@ -21,6 +22,7 @@ When(/^I fill a (.*) and (.*)$/, (email, password) => {
 
 When('I try to login', () => {
   loginPage.getLoginButton().click();
+  browser.pause(2000);
 });
 
 When('I click on Forgot password button', () => {
@@ -54,23 +56,16 @@ Then('I expect to see {string}', (error) => {
 });
 
 Then('I expect to see the main page', () => {
-  browser.pause(3000);
+  browser.pause(2000);
   expect(browser.getUrl()).to.include('/site');
-  logout();
 });
 
 Then('I expect to see the login page', () => {
+  browser.pause(2000);
   expect(browser.getUrl()).to.include('#/signin');
 });
 
 
-const logout = () => {
-  const profileBtnWrapper = MainPage.getProfileBtnWrapper();
-  profileBtnWrapper.waitForDisplayed(2000);
-  profileBtnWrapper.click();
-
-  const logoutBtn = MainPage.getLogoutBtn();
-  logoutBtn.waitForDisplayed(1000)
-  logoutBtn.click();
-  browser.pause(3000);
-};
+After(() => { 
+  logout();
+});
