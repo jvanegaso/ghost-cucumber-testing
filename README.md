@@ -22,3 +22,6 @@ module.exports = {
 ## Repositorio de Cypress:
 
 https://github.com/jvanegaso/ghost-cypress
+
+### Nota: Por favor revisar este documento, donde se encuentran las funcionalidades a probar y los escenarios de prueba: https://github.com/jvanegaso/ghost-cypress/blob/main/README.md
+
