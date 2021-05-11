@@ -33,6 +33,7 @@ const logout = () => {
   browser.pause(3000);
 };
 
+
 module.exports = {
   login,
   logout
