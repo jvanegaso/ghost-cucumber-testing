@@ -5,24 +5,45 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "pwa-node",
-      "request": "launch",
-      "name": "Launch Program",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "program": "${workspaceFolder}\\features\\step-definitions\\user-management\\authentication_steps.js"
-    },
-    {
-      "name": "run select spec",
+      "name": "330: run select spec",
       "type": "node",
       "request": "launch",
       "args": [
-        "wdio.conf.js"
+        "wdio-3_3_0.conf.js",
+        "--spec",
+        "./features/user-management/user-management.feature"
       ],
       "cwd": "${workspaceFolder}",
       "autoAttachChildProcesses": true,
       "program": "${workspaceRoot}/node_modules/@wdio/cli/bin/wdio.js",
+      "console": "integratedTerminal",
+      "skipFiles": [
+        "${workspaceFolder}/node_modules/**/*.js",
+        "${workspaceFolder}/lib/**/*.js",
+        "<node_internals>/**/*.js"
+      ]
+    },
+    {
+      "name": "vrt",
+      "type": "node",
+      "request": "launch",
+      "args": [
+        "${workspaceRoot}/src/setup-vrt.js",
+        "&&",
+        "npm",
+        "run",
+        "test-3-3-0",
+        "&&",
+        "npm",
+        "run",
+        "test-3-42-5",
+        "&&",
+        "node",
+        "${workspaceRoot}/src/index.js",
+      ],
+      "cwd": "${workspaceFolder}",
+      "autoAttachChildProcesses": true,
+      "program": "${workspaceRoot}/src/setup-vrt.js",
       "console": "integratedTerminal",
       "skipFiles": [
         "${workspaceFolder}/node_modules/**/*.js",

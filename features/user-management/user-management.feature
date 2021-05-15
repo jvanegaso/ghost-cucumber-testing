@@ -26,18 +26,18 @@ Feature: Authentication Management
       | email | password | error                                                 |
       |       |          | "We need your email address to reset your password! " |
 
-  Scenario: Should login with right user and password
+Scenario: Should login with right user and password
 
-    Given I go to ghost login screen
-    When I fill right user and password
-    And I try to login
-    Then I expect to see the main page
+  Given I go to ghost login screen
+  When I fill right user and password
+  And I try to login
+  Then I expect to see the main page
 
-  Scenario: Should block the user to go to /site page if session is no longer active
+Scenario: Should block the user to go to /site page if session is no longer active
 
-    Given I go to ghost login screen
-    When I fill right user and password
-    And I try to login
-    And I logout from the page
-    And I try to go to site page
-    Then I expect to see the login page
+  Given I go to ghost login screen
+  When I fill right user and password
+  And I try to login
+  And I logout from the page
+  And I try to go to site page
+  Then I expect to see the login page
