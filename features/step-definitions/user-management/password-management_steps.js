@@ -5,7 +5,6 @@ const MainPage = require('../../../page-objects/main-page');
 const profilePage = require('../../../page-objects/profile-page');
 
 
-
 Given('I login with my user and password', () => {
   login();
 });

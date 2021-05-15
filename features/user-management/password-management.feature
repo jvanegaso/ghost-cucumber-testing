@@ -15,17 +15,17 @@ Feature: Password Management
       |          |          |             | Your current password is required to set a new one | Sorry, passwords can't be blank |
 
 
-  Scenario Outline: Should show an error whether the new password and old password doesnt match
+  # Scenario Outline: Should show an error whether the new password and old password doesnt match
 
-    Given I login with my user and password
-    And go to my profile page
-    When I fill the <old_pass>, <new_pass> and <verify_pass>
-    And try to update my password
-    Then I expect to see <verify_pass_err> in the verify pass field
+  #   Given I login with my user and password
+  #   And go to my profile page
+  #   When I fill the <old_pass>, <new_pass> and <verify_pass>
+  #   And try to update my password
+  #   Then I expect to see <verify_pass_err> in the verify pass field
 
-    Examples:
-      | old_pass       | new_pass     | verify_pass        | verify_pass_err                 |
-      | Dummy Password | New password | Different password | Your new passwords do not match |
+  #   Examples:
+  #     | old_pass       | new_pass     | verify_pass        | verify_pass_err                 |
+  #     | Dummy Password | New password | Different password | Your new passwords do not match |
 
   Scenario Outline: Should show an error whether the new password contains less than 10 characters or insecure
 

@@ -1,11 +1,16 @@
 {
   "name": "ghost-cucumber-testing",
   "version": "1.0.0",
-  "description": "",
+  "description": "concurrently \"\"",
   "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/wdio wdio.conf.js",
-    "debug": "npx --nolazy --debug-brk=5858 wdio.conf.js"
+    "test-3-3-0": "node_modules/.bin/wdio wdio-3_3_0.conf.js",
+    "test-3-42-5": "node_modules/.bin/wdio wdio-3_42_5.conf.js",
+    "test-auth": "node_modules/.bin/wdio wdio.conf.js --spec ./features/user-management/user-management.feature",
+    "debug": "npx --nolazy --debug-brk=5858 wdio.conf.js",
+    "test-vrt1": "node ./src/setup-vrt.js && npm run test-3-3-0 && npm run test-3-42-5 && node ./src/export-report.js",
+    "test-vrtx": "node ./src/setup-vrt.js && node ./src/export-report.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +26,9 @@
   "dependencies": {
     "@wdio/cli": "^5.18.7",
     "chai": "^4.2.0",
+    "object-path": "^0.11.5",
+    "resemblejs": "^3.2.5",
+    "uuid": "^8.3.2",
     "webdriverio": "^5.18.7"
   },
   "devDependencies": {

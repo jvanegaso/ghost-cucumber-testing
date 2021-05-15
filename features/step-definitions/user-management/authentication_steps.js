@@ -2,11 +2,11 @@ const { Given, When, Then, After } = require('cucumber');
 const { expect } = require('chai');
 const loginPage = require('../../../page-objects/login-page');
 
-const { logout } = require('../common/common-steps');
+const { logout, takeScreenshot } = require('../common/common-steps');
 
 const { usuario, clave } = require('../../../config');
 
-Given('I go to ghost login screen', () => {
+Given('I go to ghost login screen', async () => {
   browser.url('#/signin');
 });
 

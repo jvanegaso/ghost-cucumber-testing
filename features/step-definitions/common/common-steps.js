@@ -1,6 +1,9 @@
+const { v4: uuidv4 } = require('uuid');
+
+const { getCurrentTestFolder, createFolder, writeStep } = require('../../../src/util');
+
 const MainPage = require('../../../page-objects/main-page');
 const loginPage = require('../../../page-objects/login-page');
-
 const { usuario, clave } = require('../../../config');
 
 function login() {
@@ -33,8 +36,26 @@ const logout = () => {
   browser.pause(3000);
 };
 
+async function takeScreenshot(driver, stepData, appVersion) {
+  try {
+    const imgId = uuidv4();
+    const currentFolder = await getCurrentTestFolder();
+    const imgDesFolder = `${currentFolder}/${appVersion}`;
+    await createFolder(imgDesFolder);
+    const fileName = `${imgId}.png`;
+    const path = `${imgDesFolder}/${fileName}`;
+    await driver.saveScreenshot(path);
+    await writeStep(stepData, path, appVersion);
+  } catch (e) {
+    console.error('*******************************\n');
+    console.error('There was an error creating a screenshot');
+    console.error(e.message);
+    console.error('*******************************\n');
+  }
+}
 
 module.exports = {
   login,
-  logout
+  logout,
+  takeScreenshot
 };

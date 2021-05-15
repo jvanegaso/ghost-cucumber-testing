@@ -1,6 +1,7 @@
-const { ghostBaseUrl, usuario, clave, nuevaClave } = require('./config');
+// const { ghostBaseUrl } = require('./config');
+const { takeScreenshot } = require('./features/step-definitions/common/common-steps');
 
-exports.config = {
+module.exports = {
   //
   // ====================
   // Runner Configuration
@@ -53,7 +54,7 @@ exports.config = {
     // 5 instances get started at a time.
     maxInstances: 5,
     //
-    browserName: 'chrome',
+    browserName: 'chrome'
     // If outputDir is provided WebdriverIO can capture driver session logs
     // it is possible to configure which logTypes to include/exclude.
     // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -90,7 +91,7 @@ exports.config = {
   // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
-  baseUrl: ghostBaseUrl,
+  // baseUrl: ghostBaseUrl,
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -198,8 +199,10 @@ exports.config = {
   /**
    * Runs after a Cucumber step
    */
-  // afterStep: function (uri, feature, { error, result, duration, passed }, stepData, context) {
-  // },
+  afterStep: async function (uri, feature, { error, result, duration, passed }, stepData, context) {
+    console.log('AFTER STEP');
+    await takeScreenshot(browser, stepData, this.currentGhostVersion);
+  },
   /**
    * Runs after a Cucumber scenario
    */
