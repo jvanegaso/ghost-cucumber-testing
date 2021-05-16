@@ -1,9 +1,17 @@
 const StaffPage = {
 
 
-    getTxtInvitePeople() {
-        return $('Invite people');
-      },
+  getTxtNewName() {
+    return $('input#user-name');
+  },
+
+  getTxtNewSlug() {
+    return $('input#user');
+  },
+
+  getInvitePeopleButton() {
+    return $('div.gh-nav-bottom div[role="button"]');
+  },
 
       
     getTxtNewUserEmail() {
