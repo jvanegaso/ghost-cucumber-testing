@@ -15,8 +15,9 @@ module.exports = {
 
 ## Pasos para ejecutar:
 
+- Borrar la carpeta node_modules
 - Instalar dependencias con `npm install`
-- ejecutar utilizando el comando `npx wdio run .\wdio.conf.js`
+- ejecutar utilizando el comando `npm run test-vrt1`
 
 
 ## Repositorio de Cypress:
